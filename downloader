@@ -1,0 +1,35 @@
+from pytube import YouTube 
+
+link = input("Enter download link - ")
+yt = YouTube(link)
+
+print("title - ",yt.title)
+print("")
+print("Length = ",yt.length,"seconds")
+
+select_1 = input("audio(A) or video(V) or video-audio(VA) -  ")
+if (select_1 == "VA"):
+  select = input(" change the resolution if yes press y otherwise n -")
+  if (select == "y"):
+    print(yt.streams.filter(progressive=True))
+    tag = input("Enter itag = ")
+    print("Starting Download ................")
+    hr = yt.streams.get_by_itag(tag)
+  else:
+     hr = yt.streams.get_highest_resolution()
+     print ("initiating download ......")
+     hr.download('D:\yt _downloads')
+     print("Starting Download ................")
+     print ("download complete ")
+elif (select_1 == "A" ):
+    print(yt.streams.filter(only_audio=True))
+    tag = input("Enter itag = ")
+    hr = yt.streams.get_by_itag(tag)
+    print("Starting Download ................")
+    hr.download('D:\yt _downloads')
+elif (select_1 == "V" ):
+    print(yt.streams.filter(only_video=True))
+    tag = input("Enter itag = ")
+    hr = yt.streams.get_by_itag(tag)
+    print("Starting Download ................")
+    hr.download('D:\yt _downloads')
