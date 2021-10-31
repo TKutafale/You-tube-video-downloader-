@@ -15,6 +15,7 @@ if (select_1 == "VA"):
     tag = input("Enter itag = ")
     print("Starting Download ................")
     hr = yt.streams.get_by_itag(tag)
+    hr.download('D:\yt _downloads')
   else:
      hr = yt.streams.get_highest_resolution()
      print ("initiating download ......")
